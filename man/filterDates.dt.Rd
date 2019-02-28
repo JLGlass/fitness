@@ -21,7 +21,7 @@ filterDates.dt(dt, date.start, days.up = 7, days.down = 7,
 
 \item{col.winDate}{name of the column to create with the relative number of days}
 
-\item{str.format}{date string format to use for any non-date formatted columns. Default: '%m-%d-%Y'}
+\item{str.format}{date string format to use for any non-date formatted columns. Default: '\%m-\%d-\%Y'}
 }
 \value{
 data.table subset with the dates of interest and an added column of days relative to date.start

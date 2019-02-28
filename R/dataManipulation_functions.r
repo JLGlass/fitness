@@ -8,7 +8,7 @@
 #' @param days.down days after to date.start to include. Default: 7
 #' @param col.date name of the date column in dt. Default: 'date'
 #' @param col.winDate name of the column to create with the relative number of days
-#' @param str.format date string format to use for any non-date formatted columns. Default: '%m-%d-%Y'
+#' @param str.format date string format to use for any non-date formatted columns. Default: '\%m-\%d-\%Y'
 #' 
 #' @return data.table subset with the dates of interest and an added column of days relative to date.start
 #'
@@ -42,7 +42,7 @@ filterDates.dt <- function(dt, date.start, days.up=7, days.down=7, col.date='dat
 #'
 #' @param lbl sample key table with directory, file name, and label columns
 #' @param col.time column name or vector of column names with date/time data. Default: 'StartTime'
-#' @param str.format incoming date format or vector of date formats corresponding to each element of the col.time vector. Default: '%m/%d/%Y %H:%M:%S %p' (1/22/19 12:33:45 PM)
+#' @param str.format incoming date format or vector of date formats corresponding to each element of the col.time vector. Default: '\%m/\%d/\%Y \%H:\%M:\%S \%p' (1/22/19 12:33:45 PM)
 #' @param str.tz time zone for date conversion. Default: 'UTC' (avoids double counting issues)
 #' @param col.dir column name in lbl with directory. Default: 'dir'
 #' @param col.file column name in lbl with file. Default: 'file'

@@ -13,7 +13,7 @@ read.timeFile.lst(lbl, col.time = "StartTime",
 
 \item{col.time}{column name or vector of column names with date/time data. Default: 'StartTime'}
 
-\item{str.format}{incoming date format or vector of date formats corresponding to each element of the col.time vector. Default: '%m/%d/%Y %H:%M:%S %p' (1/22/19 12:33:45 PM)}
+\item{str.format}{incoming date format or vector of date formats corresponding to each element of the col.time vector. Default: '\%m/\%d/\%Y \%H:\%M:\%S \%p' (1/22/19 12:33:45 PM)}
 
 \item{str.tz}{time zone for date conversion. Default: 'UTC' (avoids double counting issues)}
 
