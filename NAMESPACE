@@ -2,5 +2,6 @@
 
 export(createLabels.dt)
 export(filterDates.dt)
+export(lstToDt.dt)
 export(lstToMatrix.mat)
 export(read.timeFile.lst)

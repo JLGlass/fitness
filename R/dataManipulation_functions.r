@@ -99,6 +99,26 @@ lstToMatrix.mat <- function(lst, str.id, str.measure, fn.aggregate=sum, num.fill
   return(mat)
 }
 
+#' List to matrix
+#'
+#' Function to convert a list of data.tables into a matrix with list names as columns, id 
+#'
+#' @param lst list of data.tables
+#' @param str.id string with id variable name
+#' @param str.measure string with measure variable name
+#' @param fn.aggregate aggregation function. Default: sum
+#' @param num.fill value to fill in any matrix elements without data. Default: NA_real_
+#' 
+#' @return a data.table with measure variable as rows, list names as columns, measuring the measure var using fn.aggregate
+#'
+#' @export
+
+lstToDt.dt <- function(lst, str.id, str.measure, fn.aggregate=sum, num.fill=NA_real_) {
+  dt = as.data.table(dcast(melt(lst, id.vars=str.id, measure.vars=str.measure, na.rm=T), list(str.id, 'L1'), fun.aggregate=fn.aggregate, fill=num.fill, drop=F))
+  return(dt)
+}
+
+
 #' Create labels
 #'
 #' Function to create a sample key / label table
