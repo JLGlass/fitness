@@ -1,3 +1,7 @@
+#' @import data.table
+NULL
+
+
 #' Filter dates
 #'
 #' Function to filter a data table around a specific date
@@ -9,7 +13,7 @@
 #' @param col.date name of the date column in dt. Default: 'date'
 #' @param col.winDate name of the column to create with the relative number of days
 #' @param str.format date string format to use for any non-date formatted columns. Default: '\%m-\%d-\%Y'
-#' 
+#'
 #' @return data.table subset with the dates of interest and an added column of days relative to date.start
 #'
 #' @export
@@ -54,11 +58,10 @@ filterDates.dt <- function(dt, date.start, days.up=7, days.down=7, col.date='dat
 
 read.timeFile.lst <- function(lbl, col.time='StartTime', str.format='%m/%d/%Y %H:%M:%S %p', str.tz='UTC', col.dir='dir', col.file='file', col.label='label') {
     lst = list()
-    
+
     for (i in 1:nrow(lbl)) {
         i.label = as.character(lbl[i, get(col.label)])
-        i.file = lbl[i, file.path(get(col.dir), get(col.file))]
-        
+        i.file = lbl[i, normalizePath(file.path(get(col.dir), get(col.file)))]
         dt = fread(i.file)
 
         # handle cases where a vector of columns and a single or vector of formats is given
@@ -82,14 +85,14 @@ read.timeFile.lst <- function(lbl, col.time='StartTime', str.format='%m/%d/%Y %H
 
 #' List to matrix
 #'
-#' Function to convert a list of data.tables into a matrix with list names as columns, id 
+#' Function to convert a list of data.tables into a matrix with list names as columns, id
 #'
 #' @param lst list of data.tables
 #' @param str.id string with id variable name
 #' @param str.measure string with measure variable name
 #' @param fn.aggregate aggregation function. Default: sum
 #' @param num.fill value to fill in any matrix elements without data. Default: NA_real_
-#' 
+#'
 #' @return a matrix with measure variable as rows, list names as columns, measuring the measure var using fn.aggregate
 #'
 #' @export
@@ -101,14 +104,14 @@ lstToMatrix.mat <- function(lst, str.id, str.measure, fn.aggregate=sum, num.fill
 
 #' List to matrix
 #'
-#' Function to convert a list of data.tables into a matrix with list names as columns, id 
+#' Function to convert a list of data.tables into a matrix with list names as columns, id
 #'
 #' @param lst list of data.tables
 #' @param str.id string with id variable name
 #' @param str.measure string with measure variable name
 #' @param fn.aggregate aggregation function. Default: sum
 #' @param num.fill value to fill in any matrix elements without data. Default: NA_real_
-#' 
+#'
 #' @return a data.table with measure variable as rows, list names as columns, measuring the measure var using fn.aggregate
 #'
 #' @export
@@ -136,6 +139,33 @@ createLabels.dt <- function(dir.files, str.filePattern, str.idPattern='^([^_]+)_
   vec.labels = sub(str.idPattern, '\\1', vec.files)
   lbl = data.table(dir=dir.files, file=vec.files, label=vec.labels)
   return(lbl)
+}
+
+#' Read tables
+#'
+#' Function to read in a set of data tables specified by a label table
+#'
+#' @param dt.lbl data.table with sample labels, directory (can be relative to root), and file names
+#' @param col.label label column name
+#' @param col.dir directory column name
+#' @param col.file file column name
+#' @param str.rootDir root directory. Default: ''
+#'
+#' @return list of data.tables named by label
+#'
+#' @export
+
+readTables.lst <- function(dt.lbl, col.label='label', col.dir='dir', col.file='file', str.rootDir='') {
+  lst = list()
+
+  for (i in 1:nrow(dt.lbl)) {
+    i.label = dt.lbl[i, get(col.label)]
+    i.file = normalizePath(file.path(str.rootDir, dt.lbl[i, get(col.dir)], dt.lbl[i, get(col.file)]))
+    print(i.file)
+    lst[[i.label]] = fread(i.file)
+  }
+
+  return(lst)
 }
 
 
