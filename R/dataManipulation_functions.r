@@ -117,7 +117,7 @@ lstToMatrix.mat <- function(lst, str.id, str.measure, fn.aggregate=sum, num.fill
 #' @export
 
 lstToDt.dt <- function(lst, str.id, str.measure, fn.aggregate=sum, num.fill=NA_real_) {
-  dt = as.data.table(dcast(melt(lst, id.vars=str.id, measure.vars=str.measure, na.rm=T), list(str.id, 'L1'), fun.aggregate=fn.aggregate, fill=num.fill, drop=F))
+  dt = as.data.table(dcast(melt(lst, id.vars=str.id, measure.vars=str.measure, na.rm=T, variable.factor=F, value.factor=F), list(str.id, 'L1'), fun.aggregate=fn.aggregate, fill=num.fill, drop=F))
   return(dt)
 }
 
