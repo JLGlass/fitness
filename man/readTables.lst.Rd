@@ -5,7 +5,7 @@
 \title{Read tables}
 \usage{
 readTables.lst(dt.lbl, col.label = "label", col.dir = "dir",
-  col.file = "file", str.rootDir = "")
+  col.file = "file")
 }
 \arguments{
 \item{dt.lbl}{data.table with sample labels, directory (can be relative to root), and file names}
@@ -15,8 +15,6 @@ readTables.lst(dt.lbl, col.label = "label", col.dir = "dir",
 \item{col.dir}{directory column name}
 
 \item{col.file}{file column name}
-
-\item{str.rootDir}{root directory. Default: ''}
 }
 \value{
 list of data.tables named by label

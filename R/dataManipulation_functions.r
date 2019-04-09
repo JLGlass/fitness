@@ -149,18 +149,17 @@ createLabels.dt <- function(dir.files, str.filePattern, str.idPattern='^([^_]+)_
 #' @param col.label label column name
 #' @param col.dir directory column name
 #' @param col.file file column name
-#' @param str.rootDir root directory. Default: ''
 #'
 #' @return list of data.tables named by label
 #'
 #' @export
 
-readTables.lst <- function(dt.lbl, col.label='label', col.dir='dir', col.file='file', str.rootDir='') {
+readTables.lst <- function(dt.lbl, col.label='label', col.dir='dir', col.file='file') {
   lst = list()
 
   for (i in 1:nrow(dt.lbl)) {
     i.label = dt.lbl[i, get(col.label)]
-    i.file = normalizePath(file.path(str.rootDir, dt.lbl[i, get(col.dir)], dt.lbl[i, get(col.file)]))
+    i.file = normalizePath(file.path(dt.lbl[i, get(col.dir)], dt.lbl[i, get(col.file)]))
     print(i.file)
     lst[[i.label]] = fread(i.file)
   }
@@ -169,3 +168,28 @@ readTables.lst <- function(dt.lbl, col.label='label', col.dir='dir', col.file='f
 }
 
 
+#' Aggregate List
+#'
+#' Helper function to aggregate list data into columns that can later be merged into a monolithic table
+#'
+#' @param lst list with data
+#' @param col.id id in list (ex. study day)
+#' @param col.measure column to measure in list
+#' @param vec.range vector with range of id values over which to aggregate
+#' @param fn.lstAggregate function to aggregate list data
+#' @param str.variable name for id column in new table after aggregation over all col.id in vec.idRange
+#' @param str.value name for value column in new table
+#' @param fn.rangeAggregate function to aggregate data in new table (ex. median of days in the specified date range). Default: median
+#'
+#' @return data.table with aggregated data
+#'
+#' @export
+
+aggregateList.dt <- function(lst, col.id, col.measure, vec.range, fn.lstAggregate, str.variable, str.value, fn.rangeAggregate=median) {
+  dt.mlt = melt(lstToDt.dt(lst, str.id=col.id, str.measure=col.measure, fn.aggregate=fn.lstAggregate), id.vars=col.id, variable.name=str.variable, value.name=str.value, variable.factor=F, value.factor=F)
+
+  dt.agg = dt.mlt[get(col.id) %in% vec.range, list(agg.value=fn.rangeAggregate(get(str.value), na.rm=T)), by=str.variable]
+  setnames(dt.agg, 'agg.value', str.value)
+
+  return(dt.agg)
+}
