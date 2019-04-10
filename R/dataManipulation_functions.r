@@ -46,7 +46,7 @@ filterDates.dt <- function(dt, date.start, days.up=7, days.down=7, col.date='dat
 #'
 #' @param lbl sample key table with directory, file name, and label columns
 #' @param col.time column name or vector of column names with date/time data. Default: 'StartTime'
-#' @param str.format incoming date format or vector of date formats corresponding to each element of the col.time vector. Default: '\%m/\%d/\%Y \%H:\%M:\%S \%p' (1/22/19 12:33:45 PM)
+#' @param str.format incoming date format or vector of date formats corresponding to each element of the col.time vector. Default: '\%m/\%d/\%Y \%I:\%M:\%S \%p' (1/22/19 12:33:45 PM)
 #' @param str.tz time zone for date conversion. Default: 'UTC' (avoids double counting issues)
 #' @param col.dir column name in lbl with directory. Default: 'dir'
 #' @param col.file column name in lbl with file. Default: 'file'
@@ -56,7 +56,7 @@ filterDates.dt <- function(dt, date.start, days.up=7, days.down=7, col.date='dat
 #'
 #' @export
 
-read.timeFile.lst <- function(lbl, col.time='StartTime', str.format='%m/%d/%Y %H:%M:%S %p', str.tz='UTC', col.dir='dir', col.file='file', col.label='label') {
+read.timeFile.lst <- function(lbl, col.time='StartTime', str.format='%m/%d/%Y %I:%M:%S %p', str.tz='UTC', col.dir='dir', col.file='file', col.label='label') {
     lst = list()
 
     for (i in 1:nrow(lbl)) {
