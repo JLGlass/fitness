@@ -26,8 +26,8 @@ Function to correct ECOG for HR response using an angle derived from linear mode
 }
 \details{
 Default ECOG HR correction:
-  angle > 50: 0
-  angle 30-50: -2
-  angle 20-30: -1
-  angle < 20: 0
+angle > 50: 0
+angle 30-50: -2
+angle 20-30: -1
+angle < 20: 0
 }

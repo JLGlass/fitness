@@ -12,7 +12,7 @@ createLabels.dt(dir.files, str.filePattern,
 
 \item{str.filePattern}{file name pattern}
 
-\item{str.idPattern}{regular expression to identify sample id in filename. Default: '^([^_]+)_.*'}
+\item{str.idPattern}{regular expression to identify sample id in filename. Default: '^(\link{^_}+)_.*'}
 }
 \value{
 data.table with dir, file, and label (id)

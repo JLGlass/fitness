@@ -20,9 +20,10 @@ numeric ECOG score
 \description{
 Function to convert hours of activity to ECOG performance status
 Default active hours -> ECOG conversion:
-  >= 10 hours : 0
-  8-10 : 1
-  6-8 : 2
-  3-5: 3
-  < 3: 4
+
+= 10 hours : 0
+8-10 : 1
+6-8 : 2
+3-5: 3
+< 3: 4
 }

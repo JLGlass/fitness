@@ -26,7 +26,7 @@ Function to correct ECOG for percentage of time spent being 'fairly' or 'very' a
 }
 \details{
 Default ECOG correction:
-  fairly + very active < %10: 0
-  very active >= 5%: -2
-  fairly active >= 10%: -1
+fairly + very active < %10: 0
+very active >= 5%: -2
+fairly active >= 10%: -1
 }

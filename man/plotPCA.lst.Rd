@@ -4,21 +4,26 @@
 \alias{plotPCA.lst}
 \title{A function to produce a list of PCA plots}
 \usage{
-plotPCA.lst(pca.obj, lbl, str.label, vec.colors.type, p.theme,
-  col.group = "group")
+plotPCA.lst(pca.obj, lbl, str.title = "PCA", vec.colors.type, p.theme,
+  col.group = "group", str.legend = "Group",
+  str.xlabLoading = "Ranked variables")
 }
 \arguments{
 \item{pca.obj}{pca object}
 
 \item{lbl}{data.table with sample labels and groups}
 
-\item{str.label}{string with plot title}
+\item{str.title}{string with plot title. Default: 'PCA'}
 
 \item{vec.colors.type}{color vector for sample types}
 
 \item{p.theme}{ggplot2 theme variable}
 
 \item{col.group}{group column in lbl. Default: 'group'}
+
+\item{str.legend}{figure legend title. Default: 'Group'}
+
+\item{str.xlabLoading}{x axis label in PCA loadings figure. Default: 'Ranked variables'}
 }
 \value{
 list of plots

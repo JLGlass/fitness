@@ -22,9 +22,9 @@ Function to convert hours of activity to ECOG performance status
 }
 \details{
 Default active hours -> ECOG conversion
-  ECOG 4 = 0-25%
-  ECOG 3 = 25-50%
-  ECOG 2 = 50-75%
-  ECOG 1 = 75-90%
-  ECOG 0 = > 90%
+ECOG 4 = 0-25%
+ECOG 3 = 25-50%
+ECOG 2 = 50-75%
+ECOG 1 = 75-90%
+ECOG 0 = > 90%
 }
