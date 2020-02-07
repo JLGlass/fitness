@@ -4,8 +4,7 @@
 \alias{createLabels.dt}
 \title{Create labels}
 \usage{
-createLabels.dt(dir.files, str.filePattern,
-  str.idPattern = "^([^_]+)_.*")
+createLabels.dt(dir.files, str.filePattern, str.idPattern = "^([^_]+)_.*")
 }
 \arguments{
 \item{dir.files}{directory containing the files}

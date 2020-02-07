@@ -4,8 +4,16 @@
 \alias{aggregateList.dt}
 \title{Aggregate List}
 \usage{
-aggregateList.dt(lst, col.id, col.measure, vec.range, fn.lstAggregate,
-  str.variable, str.value, fn.rangeAggregate = median)
+aggregateList.dt(
+  lst,
+  col.id,
+  col.measure,
+  vec.range = c(),
+  fn.lstAggregate,
+  str.variable,
+  str.value,
+  fn.rangeAggregate = median
+)
 }
 \arguments{
 \item{lst}{list with data}

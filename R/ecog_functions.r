@@ -4,6 +4,7 @@ NULL
 #' Hours to ECOG (numeric)
 #'
 #' Function to convert hours of activity to ECOG performance status
+#'
 #' Default active hours -> ECOG conversion:
 #'   >= 10 hours : 0
 #'   8-10 : 1

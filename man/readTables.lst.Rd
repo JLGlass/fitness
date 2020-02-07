@@ -4,8 +4,7 @@
 \alias{readTables.lst}
 \title{Read tables}
 \usage{
-readTables.lst(dt.lbl, col.label = "label", col.dir = "dir",
-  col.file = "file")
+readTables.lst(dt.lbl, col.label = "label", col.dir = "dir", col.file = "file")
 }
 \arguments{
 \item{dt.lbl}{data.table with sample labels, directory (can be relative to root), and file names}

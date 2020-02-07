@@ -4,8 +4,15 @@
 \alias{getDend.lst}
 \title{A function to generate a list of dendrograms with various sd cutoffs}
 \usage{
-getDend.lst(mat, lbl, vec.sd, dist.method, hclust.method, vec.colors,
-  colorFn = labelNode)
+getDend.lst(
+  mat,
+  lbl,
+  vec.sd,
+  dist.method,
+  hclust.method,
+  vec.colors,
+  colorFn = labelNode
+)
 }
 \arguments{
 \item{mat}{matrix of data}

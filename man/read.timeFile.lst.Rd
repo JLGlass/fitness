@@ -4,24 +4,30 @@
 \alias{read.timeFile.lst}
 \title{Read time file}
 \usage{
-read.timeFile.lst(lbl, col.time = "StartTime",
-  str.format = "\%m/\%d/\%Y \%I:\%M:\%S \%p", str.tz = "UTC",
-  col.dir = "dir", col.file = "file", col.label = "label")
+read.timeFile.lst(
+  lbl,
+  col.time = "StartTime",
+  str.format = "\%m/\%d/\%Y \%I:\%M:\%S \%p",
+  str.tz = "UTC",
+  col.dir = "dir",
+  col.file = "file",
+  col.label = "label"
+)
 }
 \arguments{
 \item{lbl}{sample key table with directory, file name, and label columns}
 
-\item{col.time}{column name or vector of column names with date/time data. Default: 'StartTime'}
+\item{col.time}{column name or vector of column names with date/time data.}
 
-\item{str.format}{incoming date format or vector of date formats corresponding to each element of the col.time vector. Default: '\%m/\%d/\%Y \%I:\%M:\%S \%p' (1/22/19 12:33:45 PM)}
+\item{str.format}{incoming date format or vector of date formats corresponding to each element of the col.time vector. Default format: (1/22/19 12:33:45 PM).}
 
-\item{str.tz}{time zone for date conversion. Default: 'UTC' (avoids double counting issues)}
+\item{str.tz}{time zone for date conversion. Defaults to UTC to avoid double counting issues.}
 
-\item{col.dir}{column name in lbl with directory. Default: 'dir'}
+\item{col.dir}{column name in lbl with directory.}
 
-\item{col.file}{column name in lbl with file. Default: 'file'}
+\item{col.file}{column name in lbl with file.}
 
-\item{col.label}{column name in lbl with label. Default: 'label'}
+\item{col.label}{column name in lbl with label.}
 }
 \value{
 data.table with time columns in posix format

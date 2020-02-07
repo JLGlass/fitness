@@ -4,9 +4,16 @@
 \alias{plotPCA.lst}
 \title{A function to produce a list of PCA plots}
 \usage{
-plotPCA.lst(pca.obj, lbl, str.title = "PCA", vec.colors.type, p.theme,
-  col.group = "group", str.legend = "Group",
-  str.xlabLoading = "Ranked variables")
+plotPCA.lst(
+  pca.obj,
+  lbl,
+  str.title = "PCA",
+  vec.colors.type,
+  p.theme,
+  col.group = "group",
+  str.legend = "Group",
+  str.xlabLoading = "Ranked variables"
+)
 }
 \arguments{
 \item{pca.obj}{pca object}

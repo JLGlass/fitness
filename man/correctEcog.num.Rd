@@ -4,8 +4,13 @@
 \alias{correctEcog.num}
 \title{Correct ECOG (numeric)}
 \usage{
-correctEcog.num(num.ecog, num.angle, num.cutoffLow = 20,
-  num.cutoffModerate = 30, num.cutoffHigh = 50)
+correctEcog.num(
+  num.ecog,
+  num.angle,
+  num.cutoffLow = 20,
+  num.cutoffModerate = 30,
+  num.cutoffHigh = 50
+)
 }
 \arguments{
 \item{num.ecog}{ECOG score}

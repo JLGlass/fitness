@@ -4,8 +4,7 @@
 \alias{lstToDt.dt}
 \title{List to matrix}
 \usage{
-lstToDt.dt(lst, str.id, str.measure, fn.aggregate = sum,
-  num.fill = NA_real_)
+lstToDt.dt(lst, str.id, str.measure, fn.aggregate = sum)
 }
 \arguments{
 \item{lst}{list of data.tables}
@@ -15,8 +14,6 @@ lstToDt.dt(lst, str.id, str.measure, fn.aggregate = sum,
 \item{str.measure}{string with measure variable name}
 
 \item{fn.aggregate}{aggregation function. Default: sum}
-
-\item{num.fill}{value to fill in any matrix elements without data. Default: NA_real_}
 }
 \value{
 a data.table with measure variable as rows, list names as columns, measuring the measure var using fn.aggregate

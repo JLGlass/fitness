@@ -4,8 +4,11 @@
 \alias{hoursToEcog.num}
 \title{Hours to ECOG (numeric)}
 \usage{
-hoursToEcog.num(num.hours, vec.breaks = c(0, 3, 6, 8, 10, 20),
-  vec.labels = c(4, 3, 2, 1, 0))
+hoursToEcog.num(
+  num.hours,
+  vec.breaks = c(0, 3, 6, 8, 10, 20),
+  vec.labels = c(4, 3, 2, 1, 0)
+)
 }
 \arguments{
 \item{num.hours}{number of hours}
@@ -19,11 +22,7 @@ numeric ECOG score
 }
 \description{
 Function to convert hours of activity to ECOG performance status
-Default active hours -> ECOG conversion:
-
-= 10 hours : 0
-8-10 : 1
-6-8 : 2
-3-5: 3
-< 3: 4
+}
+\details{
+Default active hours -> ECOG conversion:= 10 hours : 08-10 : 16-8 : 23-5: 3< 3: 4
 }

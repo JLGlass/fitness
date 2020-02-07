@@ -4,9 +4,20 @@
 \alias{plotScatter.plt}
 \title{Plot Scatter}
 \usage{
-plotScatter.plt(dt, col.x, col.y, vec.xlim, vec.ylim, str.title, str.xlab,
-  str.ylab, p.theme, num.alpha = 0.07, num.size = 0.5,
-  trend.method = "lm")
+plotScatter.plt(
+  dt,
+  col.x,
+  col.y,
+  vec.xlim,
+  vec.ylim,
+  str.title,
+  str.xlab,
+  str.ylab,
+  p.theme,
+  num.alpha = 0.07,
+  num.size = 0.5,
+  trend.method = "lm"
+)
 }
 \arguments{
 \item{dt}{data.table to plot}

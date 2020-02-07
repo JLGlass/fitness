@@ -8,11 +8,11 @@ NULL
 #'
 #' @param dt data.table with a date column
 #' @param date.start date to filter around
-#' @param days.up days prior to date.start to include. Default: 7
-#' @param days.down days after to date.start to include. Default: 7
-#' @param col.date name of the date column in dt. Default: 'date'
+#' @param days.up days prior to date.start to include.
+#' @param days.down days after to date.start to include.
+#' @param col.date name of the date column in dt.
 #' @param col.winDate name of the column to create with the relative number of days
-#' @param str.format date string format to use for any non-date formatted columns. Default: '\%m-\%d-\%Y'
+#' @param str.format date string format to use for any non-date formatted columns.
 #'
 #' @return data.table subset with the dates of interest and an added column of days relative to date.start
 #'
@@ -45,12 +45,12 @@ filterDates.dt <- function(dt, date.start, days.up=7, days.down=7, col.date='dat
 #' Reads a file with date/time data using information in a label table
 #'
 #' @param lbl sample key table with directory, file name, and label columns
-#' @param col.time column name or vector of column names with date/time data. Default: 'StartTime'
-#' @param str.format incoming date format or vector of date formats corresponding to each element of the col.time vector. Default: '\%m/\%d/\%Y \%I:\%M:\%S \%p' (1/22/19 12:33:45 PM)
-#' @param str.tz time zone for date conversion. Default: 'UTC' (avoids double counting issues)
-#' @param col.dir column name in lbl with directory. Default: 'dir'
-#' @param col.file column name in lbl with file. Default: 'file'
-#' @param col.label column name in lbl with label. Default: 'label'
+#' @param col.time column name or vector of column names with date/time data.
+#' @param str.format incoming date format or vector of date formats corresponding to each element of the col.time vector. Default format: (1/22/19 12:33:45 PM).
+#' @param str.tz time zone for date conversion. Defaults to UTC to avoid double counting issues.
+#' @param col.dir column name in lbl with directory.
+#' @param col.file column name in lbl with file.
+#' @param col.label column name in lbl with label.
 #'
 #' @return data.table with time columns in posix format
 #'
@@ -83,6 +83,65 @@ read.timeFile.lst <- function(lbl, col.time='StartTime', str.format='%m/%d/%Y %I
     return(lst)
 }
 
+
+#' Function to add study week and day columns (integers) to a data.table
+#'
+#' @param dt data.table
+#' @param str.id subject id to analyze in date table
+#' @param dt.dates data.table with study date ranges including study start date and weeks of interest
+#' @param col.time column with time in dt (POSIX format expected)
+#' @param col.datesId column with subject ids in dt.dates
+#' @param col.datesStudyStartDate column with study start date in dt.dates
+#' @param col.datesStudyWeek column with week numbers in dt.dates
+#' @param col.datesStudyWeekDate column with week dates in dt.dates
+#' @param col.study.day column to add to dt with study days
+#' @param col.study.week column to add to dt with study weeks
+#' @param num.week.min minimum week value to use (set very low by default to include all data)
+#' @param num.week.max maximum week value to use (set very high by default to include all data)
+#'
+#' @return data.table with dt + col.study.day and col.study.week
+#'
+#' @export
+#'
+
+addStudyTimes.dt <- function(dt, str.id, dt.dates, col.time='StartTime', col.datesId='record_id', col.datesStudyStartDate='study_start_date', col.datesStudyWeek='week', col.datesStudyWeekDate='start_date', col.study.day='study.day', col.study.week='study.week', num.week.min=-1000, num.week.max=1000) {
+  # set study day to the difference in days between study start and current time
+  dt[, (col.study.day):=(1+as.integer(difftime(get(col.time), dt.dates[get(col.datesId)==str.id, unique(get(col.datesStudyStartDate))], units='days')))]
+
+  # set study week to the period of time between the previous and current week start
+  dt[, (col.study.week):=cut(get(col.study.day), breaks=c(num.week.min,dt.dates[get(col.datesId)==str.id & get(col.datesStudyWeek) >=0, get(col.study.day)], num.week.max), labels=0:nrow(dt.dates[get(col.datesId)==str.id & get(col.datesStudyWeek)>=0,]))]
+
+  return(dt)
+}
+
+#' Function to add study week and day columns (integers) to a list of data.tables
+#'
+#' @param dt data.table
+#' @param dt.dates data.table with study date ranges including study start date and weeks of interest
+#' @param col.time column with time in dt (POSIX format expected)
+#' @param col.datesId column with subject ids in dt.dates
+#' @param col.datesStudyStartDate column with study start date in dt.dates
+#' @param col.datesStudyWeek column with week numbers in dt.dates
+#' @param col.datesStudyWeekDate column with week dates in dt.dates
+#' @param col.study.day column to add to dt with study days
+#' @param col.study.week column to add to dt with study weeks
+#' @param num.week.min minimum week value to use (set very low by default to include all data)
+#' @param week.max maximum week value to use (set very high by default to include all data)
+#'
+#' @return list of data.tables with dt + col.study.day and col.study.week
+#'
+#' @export
+
+addStudyTimes.lst <- function(lst, dt.dates, col.time='StartTime', col.datesId='record_id', col.datesStudyStartDate='study_start_date', col.datesStudyWeek='week', col.datesStudyWeekDate='start_date', col.study.day='study.day', col.study.week='study.week', num.week.min=-1000, num.week.max=1000) {
+  # create a named list element vector for easy lapply use
+  vec.elements = setNames(names(lst), names(lst))
+
+  # lapply to add columns using the data.table version of this function
+  lst.new = lapply(vec.elements, function(x) {addStudyTimes.dt(lst[[x]], x, dt.dates, col.time, col.datesId, col.datesStudyStartDate, col.datesStudyWeek, col.datesStudyWeekDate, col.study.day, col.study.week, num.week.min, num.week.max)})
+
+  return(lst.new)
+}
+
 #' List to matrix
 #'
 #' Function to convert a list of data.tables into a matrix with list names as columns, id
@@ -91,14 +150,17 @@ read.timeFile.lst <- function(lbl, col.time='StartTime', str.format='%m/%d/%Y %I
 #' @param str.id string with id variable name
 #' @param str.measure string with measure variable name
 #' @param fn.aggregate aggregation function. Default: sum
-#' @param num.fill value to fill in any matrix elements without data. Default: NA_real_
 #'
 #' @return a matrix with measure variable as rows, list names as columns, measuring the measure var using fn.aggregate
 #'
 #' @export
 
-lstToMatrix.mat <- function(lst, str.id, str.measure, fn.aggregate=sum, num.fill=NA_real_) {
-  mat = acast(melt(lst, id.vars=str.id, measure.vars=str.measure, na.rm=T), list(str.id, 'L1'), fun.aggregate=fn.aggregate, fill=num.fill, drop=F)
+lstToMatrix.mat <- function(lst, str.id, str.measure, fn.aggregate=sum) {
+  dt = lstToDt.dt(lst, str.id, str.measure, fn.aggregate)
+
+  vec.names = setdiff(colnames(dt), str.id)
+  mat = as.matrix(dt[, .SD, .SDcols=vec.names], rownames.value=dt[, get(str.id)])
+
   return(mat)
 }
 
@@ -110,15 +172,19 @@ lstToMatrix.mat <- function(lst, str.id, str.measure, fn.aggregate=sum, num.fill
 #' @param str.id string with id variable name
 #' @param str.measure string with measure variable name
 #' @param fn.aggregate aggregation function. Default: sum
-#' @param num.fill value to fill in any matrix elements without data. Default: NA_real_
 #'
 #' @return a data.table with measure variable as rows, list names as columns, measuring the measure var using fn.aggregate
 #'
 #' @export
 
-lstToDt.dt <- function(lst, str.id, str.measure, fn.aggregate=sum, num.fill=NA_real_) {
-  dt = as.data.table(dcast(melt(lst, id.vars=str.id, measure.vars=str.measure, na.rm=T, variable.factor=F, value.factor=F), list(str.id, 'L1'), fun.aggregate=fn.aggregate, fill=num.fill, drop=F))
-  return(dt)
+lstToDt.dt <- function(lst, str.id, str.measure, fn.aggregate=sum) {
+  vec.names = setNames(names(lst), names(lst))
+  lst.sub = lapply(vec.names, function(x) { dt = lst[[x]][, fn.aggregate(get(str.measure)), by=str.id]; setnames(dt, c(str.id, x)); return(dt) })
+
+  dt.merged = Reduce(function(x, y) { merge(x, y, by=str.id, all=T)}, lst.sub)
+  setkeyv(dt.merged, str.id)
+
+  return(dt.merged)
 }
 
 
@@ -185,10 +251,15 @@ readTables.lst <- function(dt.lbl, col.label='label', col.dir='dir', col.file='f
 #'
 #' @export
 
-aggregateList.dt <- function(lst, col.id, col.measure, vec.range, fn.lstAggregate, str.variable, str.value, fn.rangeAggregate=median) {
+aggregateList.dt <- function(lst, col.id, col.measure, vec.range=c(), fn.lstAggregate, str.variable, str.value, fn.rangeAggregate=median) {
   dt.mlt = melt(lstToDt.dt(lst, str.id=col.id, str.measure=col.measure, fn.aggregate=fn.lstAggregate), id.vars=col.id, variable.name=str.variable, value.name=str.value, variable.factor=F, value.factor=F)
 
-  dt.agg = dt.mlt[get(col.id) %in% vec.range, list(agg.value=fn.rangeAggregate(get(str.value), na.rm=T)), by=str.variable]
+  if (length(vec.range) > 0) {
+    dt.agg = dt.mlt[get(col.id) %in% vec.range, list(agg.value=fn.rangeAggregate(get(str.value), na.rm=T)), by=str.variable]
+  } else {
+    dt.agg = dt.mlt[, list(agg.value=fn.rangeAggregate(get(str.value), na.rm=T)), by=str.variable]
+  }
+
   setnames(dt.agg, 'agg.value', str.value)
 
   return(dt.agg)

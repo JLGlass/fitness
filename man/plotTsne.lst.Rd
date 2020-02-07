@@ -4,9 +4,17 @@
 \alias{plotTsne.lst}
 \title{A function to produce a list of TSNE plots for a set of scores}
 \usage{
-plotTsne.lst(tsne.obj, vec.rows, lbl, str.title = "TSNE",
-  vec.colors.type, p.theme, col.group = "group", col.key = "label",
-  str.legend = "Group")
+plotTsne.lst(
+  tsne.obj,
+  vec.rows,
+  lbl,
+  str.title = "TSNE",
+  vec.colors.type,
+  p.theme,
+  col.group = "group",
+  col.key = "label",
+  str.legend = "Group"
+)
 }
 \arguments{
 \item{vec.rows}{sample names}

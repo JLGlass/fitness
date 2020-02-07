@@ -4,8 +4,11 @@
 \alias{hoursToEcog.pct}
 \title{Hours to ECOG (percent)}
 \usage{
-hoursToEcog.pct(num.pct, vec.breaks = c(0, 0.25, 0.5, 0.75, 0.9, 1),
-  vec.labels = c(4, 3, 2, 1, 0))
+hoursToEcog.pct(
+  num.pct,
+  vec.breaks = c(0, 0.25, 0.5, 0.75, 0.9, 1),
+  vec.labels = c(4, 3, 2, 1, 0)
+)
 }
 \arguments{
 \item{num.pct}{percent daily activity}
@@ -22,9 +25,9 @@ Function to convert hours of activity to ECOG performance status
 }
 \details{
 Default active hours -> ECOG conversion
-ECOG 4 = 0-25%
-ECOG 3 = 25-50%
-ECOG 2 = 50-75%
-ECOG 1 = 75-90%
-ECOG 0 = > 90%
+ECOG 4 = 0-25\%
+ECOG 3 = 25-50\%
+ECOG 2 = 50-75\%
+ECOG 1 = 75-90\%
+ECOG 0 = > 90\%
 }
