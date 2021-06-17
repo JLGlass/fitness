@@ -227,7 +227,7 @@ readTables.lst <- function(dt.lbl, col.label='label', col.dir='dir', col.file='f
     i.label = dt.lbl[i, get(col.label)]
     i.file = normalizePath(file.path(dt.lbl[i, get(col.dir)], dt.lbl[i, get(col.file)]))
     print(i.file)
-    lst[[i.label]] = fread(i.file)
+    lst[[i.label]] = fread(file=i.file)
   }
 
   return(lst)
