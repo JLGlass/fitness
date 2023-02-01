@@ -1,0 +1,17 @@
+﻿aggregate_steps,continuous_steps,hr,Days_Btwn_Sync_7,Days_Btwn_Sync_30,label,label_factor
+TRUE,TRUE,TRUE,TRUE             ,TRUE              ,All data captured,1
+TRUE,TRUE,TRUE,FALSE            ,TRUE              ,All data captured,1
+TRUE,TRUE,TRUE,FALSE            ,FALSE             ,All data captured,1
+TRUE,FALSE,TRUE,FALSE            ,TRUE              ,Continuous HR + aggregate steps only,2
+TRUE,FALSE,TRUE,FALSE            ,FALSE             ,Continuous HR + aggregate steps only,2
+TRUE,FALSE,TRUE,TRUE             ,TRUE              ,Continuous HR + aggregate steps only,2
+TRUE,TRUE,FALSE,FALSE            ,TRUE              ,Continuous + aggregate steps only ,3
+TRUE,TRUE,FALSE,TRUE             ,TRUE              ,Continuous + aggregate steps only ,3
+TRUE,FALSE,FALSE,FALSE            ,FALSE             ,Aggregate steps only,4
+TRUE,FALSE,FALSE,FALSE            ,TRUE              ,Aggregate steps only,4
+TRUE,FALSE,FALSE,TRUE             ,TRUE              ,Aggregate steps only,4
+FALSE,TRUE,TRUE,TRUE             ,TRUE              ,"Continuous HR, steps = 0",5
+FALSE,TRUE,TRUE,FALSE            ,TRUE              ,"Continuous HR, steps = 0",5
+FALSE,TRUE,FALSE,FALSE            ,TRUE              ,No tracker data,6
+FALSE,TRUE,FALSE,TRUE             ,TRUE              ,No tracker data,6
+FALSE,TRUE,FALSE,FALSE            ,FALSE             ,No tracker data,6

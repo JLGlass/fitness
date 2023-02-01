@@ -1,0 +1,17 @@
+﻿Group.No,Domain.Name,Question,PRSM.Item
+Group 1,Sleep,Fatigue,PRSM_Fatigue_s
+Group 1,Sleep,Insomnia,PRSM_Insomnia_s
+Group 2,Cognitive,Memory,PRSM_Memory_s
+Group 2,Cognitive,Concentration,PRSM_Concentrate_s
+Group 3,Sensory,Pain,PRSM_Pain_s
+Group 3,Sensory,Headache,PRSM_Headache_s
+Group 3,Sensory,Paresthesia,PRSM_Paresthesia_s
+Group 4,Psych,Anxiety,PRSM_Anxiety_s
+Group 4,Psych,Sadness,PRSM_Sad_s
+Group 5,Pulmonary,Cough,PRSM_Cough_s
+Group 5,Pulmonary,Shortness of breath,PRSM_ShortBrth_s
+Group 6,Food,Nausea,PRSM_Nausea_s
+Group 6,Food,Appetite,PRSM_Appetite_s
+Group 7,Toileting,Diarrhea,PRSM_Diarrhea_f
+Group 7,Toileting,Constipation,PRSM_Constip_s
+Group 7,Toileting,Urine incontinence,PRSM_UrineIncont_f

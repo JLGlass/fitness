@@ -1,0 +1,17 @@
+﻿Missing_TotalSteps,Missing_Steps,Missing_HR,Sedentary ,Days_Btwn_Sync_7,Days_Btwn_Sync_30,Label,Label_Factor
+FALSE              ,FALSE         ,FALSE      ,FALSE     ,TRUE             ,TRUE              ,All data captured,1
+FALSE              ,FALSE         ,FALSE      ,FALSE     ,FALSE            ,TRUE              ,All data captured,1
+FALSE              ,FALSE         ,FALSE      ,FALSE     ,FALSE            ,FALSE             ,All data captured,1
+FALSE              ,TRUE          ,FALSE      ,FALSE     ,FALSE            ,TRUE              ,Continuous HR + aggregate steps only,2
+FALSE              ,TRUE          ,FALSE      ,FALSE     ,FALSE            ,FALSE             ,Continuous HR + aggregate steps only,2
+FALSE              ,TRUE          ,FALSE      ,FALSE     ,TRUE             ,TRUE              ,Continuous HR + aggregate steps only,2
+FALSE              ,FALSE         ,TRUE       ,FALSE     ,FALSE            ,TRUE              ,Continuous + aggregate steps only ,3
+FALSE              ,FALSE         ,TRUE       ,FALSE     ,TRUE             ,TRUE              ,Continuous + aggregate steps only ,3
+FALSE              ,TRUE          ,TRUE       ,FALSE     ,FALSE            ,FALSE             ,Aggregate steps only,4
+FALSE              ,TRUE          ,TRUE       ,FALSE     ,FALSE            ,TRUE              ,Aggregate steps only,4
+FALSE              ,TRUE          ,TRUE       ,FALSE     ,TRUE             ,TRUE              ,Aggregate steps only,4
+TRUE               ,FALSE         ,FALSE      ,TRUE      ,TRUE             ,TRUE              ,"Continuous HR, steps = 0",5
+TRUE               ,FALSE         ,FALSE      ,TRUE      ,FALSE            ,TRUE              ,"Continuous HR, steps = 0",5
+TRUE               ,FALSE         ,TRUE       ,TRUE      ,FALSE            ,TRUE              ,No tracker data,6
+TRUE               ,FALSE         ,TRUE       ,TRUE      ,TRUE             ,TRUE              ,No tracker data,6
+TRUE               ,FALSE         ,TRUE       ,TRUE      ,FALSE            ,FALSE             ,No tracker data,6

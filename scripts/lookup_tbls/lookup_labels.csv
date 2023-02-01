@@ -1,0 +1,17 @@
+﻿Missing_TotalSteps,Missing_Steps,Missing_HR,Sedentary ,Days_Btwn_Sync_7,Days_Btwn_Sync_30,Label,Label_Factor
+FALSE              ,TRUE          ,TRUE       ,FALSE     ,FALSE            ,FALSE             ,Continuous Data not Captured,1
+FALSE              ,TRUE          ,TRUE       ,FALSE     ,FALSE            ,TRUE              ,Continuous Data not Captured,1
+FALSE              ,TRUE          ,TRUE       ,FALSE     ,TRUE             ,TRUE              ,Continuous Data not Captured,1
+FALSE              ,FALSE         ,FALSE      ,FALSE     ,TRUE             ,TRUE              ,Data Captured,2
+FALSE              ,FALSE         ,FALSE      ,FALSE     ,FALSE            ,TRUE              ,Data Captured,2
+FALSE              ,FALSE         ,FALSE      ,FALSE     ,FALSE            ,FALSE             ,Data Captured,2
+FALSE              ,TRUE          ,FALSE      ,FALSE     ,FALSE            ,TRUE              ,"HR Captured, Continuous Steps Not Captured",3
+FALSE              ,TRUE          ,FALSE      ,FALSE     ,FALSE            ,FALSE             ,"HR Captured, Continuous Steps Not Captured",3
+FALSE              ,TRUE          ,FALSE      ,FALSE     ,TRUE             ,TRUE              ,"HR Captured, Continuous Steps Not Captured",3
+FALSE              ,FALSE         ,TRUE       ,FALSE     ,FALSE            ,TRUE              ,"HR Not Captured, Continuous Steps Captured",4
+FALSE              ,FALSE         ,TRUE       ,FALSE     ,TRUE             ,TRUE              ,"HR Not Captured, Continuous Steps Captured",4
+TRUE               ,FALSE         ,FALSE      ,TRUE      ,TRUE             ,TRUE              ,Person Didn't Move,5
+TRUE               ,FALSE         ,FALSE      ,TRUE      ,FALSE            ,TRUE              ,Person Didn't Move,5
+TRUE               ,FALSE         ,TRUE       ,TRUE      ,FALSE            ,TRUE              ,Tracker Not Used,6
+TRUE               ,FALSE         ,TRUE       ,TRUE      ,TRUE             ,TRUE              ,Tracker Not Used,6
+TRUE               ,FALSE         ,TRUE       ,TRUE      ,FALSE            ,FALSE             ,Tracker Not Used,6
